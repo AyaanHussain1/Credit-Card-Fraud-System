@@ -8,7 +8,6 @@ warnings.filterwarnings('ignore')
 # Page configuration
 st.set_page_config(
     page_title="Fraud Detector",
-    page_icon="🔐",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -171,7 +170,7 @@ data = load_data()
 # Header
 st.markdown("""
     <div class="header-container">
-        <div class="header-title">🔐 Credit Card Fraud Detector</div>
+        <div class="header-title"> Credit Card Fraud Detector</div>
         <div class="header-subtitle">AI-Powered Fraud Detection System</div>
     </div>
 """, unsafe_allow_html=True)
@@ -180,7 +179,7 @@ st.markdown("""
 col1, col2 = st.columns([1, 1], gap="large")
 
 with col1:
-    st.markdown('<p class="select-label">📋 Select Transaction</p>', unsafe_allow_html=True)
+    st.markdown('<p class="select-label"> Select Transaction</p>', unsafe_allow_html=True)
     
     # Create transaction identifier
     transaction_ids = [f"Transaction {i+1}" for i in range(len(data))]
@@ -196,7 +195,7 @@ with col1:
     selected_row = data.iloc[selected_idx].to_dict()
 
 with col2:
-    st.markdown('<p class="select-label">💰 Amount Range</p>', unsafe_allow_html=True)
+    st.markdown('<p class="select-label"> Amount Range</p>', unsafe_allow_html=True)
     amount = st.number_input(
         "Transaction amount:",
         min_value=0.0,
@@ -209,7 +208,7 @@ with col2:
 # Display selected transaction data
 st.markdown('<hr>', unsafe_allow_html=True)
 
-st.markdown('<p class="select-label">📊 Transaction Details</p>', unsafe_allow_html=True)
+st.markdown('<p class="select-label"> Transaction Details</p>', unsafe_allow_html=True)
 
 # Show all features except Time (hide Time but use it for predictions)
 display_features = [col for col in data.columns if col != 'Time']
@@ -250,12 +249,12 @@ if st.button("🔍 Analyze Transaction", key="predict_btn", use_container_width=
             # Display result
             if prediction == 1:
                 st.markdown(
-                    f'<div class="fraud-result">⚠️ FRAUD DETECTED<br><small>Risk Level: {probability[1]*100:.1f}%</small></div>',
+                    f'<div class="fraud-result"> FRAUD DETECTED<br><small>Risk Level: {probability[1]*100:.1f}%</small></div>',
                     unsafe_allow_html=True
                 )
             else:
                 st.markdown(
-                    f'<div class="safe-result">✅ TRANSACTION SAFE<br><small>Confidence: {probability[0]*100:.1f}%</small></div>',
+                    f'<div class="safe-result"> TRANSACTION SAFE<br><small>Confidence: {probability[0]*100:.1f}%</small></div>',
                     unsafe_allow_html=True
                 )
             
@@ -273,7 +272,7 @@ if st.button("🔍 Analyze Transaction", key="predict_btn", use_container_width=
 # Info box
 st.markdown("""
     <div class="info-box">
-        <strong>ℹ️ How it works:</strong> Select a transaction, adjust the amount if needed, and click "Analyze Transaction" 
+        <strong> How it works:</strong> Select a transaction, adjust the amount if needed, and click "Analyze Transaction" 
         to get real-time fraud detection results powered by machine learning.
     </div>
 """, unsafe_allow_html=True)
